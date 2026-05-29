@@ -68,6 +68,7 @@ Not started yet:
 4. Prefer implementing real data-backed pages over placeholder pages when the schema supports it.
 5. Keep route parity intact while evolving the internals.
 6. After every meaningful change, update the docs so the next agent does not have to reverse-engineer the repo state.
+7. If you change front-end assets, run `npm run build` locally and keep `public/build` in sync because Hostinger does not provide Node or npm.
 
 ## Validation Checklist
 Run the narrowest useful checks first, then the broader ones:
@@ -77,6 +78,13 @@ Run the narrowest useful checks first, then the broader ones:
 
 ## Known Environment Note
 Add and keep the project-local `postcss.config.js`. Without it, Vite can inherit a parent Laragon PostCSS config from `c:\laragon\www\postcss.config.js` and fail the build.
+
+## Known Production Note
+- Hostinger for `kccbl.org` serves this site from `~/domains/kccbl.org/public_html`.
+- The domain root is `~/domains/kccbl.org` and should hold the Laravel app outside the public web root.
+- The Hostinger shell currently has PHP 8.4, Composer, and Git available, but no `node` or `npm`.
+- The Hostinger account can read `git@github.com:dstang21/kccbl_org.git` over SSH.
+- Production deployments therefore depend on prebuilt Vite assets being present in `public/build`.
 
 ## Next Best Slices
 1. Implement Laravel auth and `/profile` cleanly against the existing `users` table.

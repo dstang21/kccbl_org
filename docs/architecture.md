@@ -104,3 +104,6 @@ The guiding principle is compatibility first, modernization second.
 - Do not run a migration strategy that attempts to recreate or rename the legacy tables.
 - The project-local `postcss.config.js` must remain present so Vite does not inherit a parent Laragon PostCSS config.
 - The current tests intentionally avoid depending on a locally imported legacy schema; route and configuration tests are the current safe baseline.
+- Hostinger shared hosting for `kccbl.org` serves from `~/domains/kccbl.org/public_html`, with the Laravel app expected to live outside the web root.
+- The current Hostinger shell has PHP, Composer, and Git, but no Node or npm.
+- Production deploys therefore rely on prebuilt Vite assets being present in `public/build`.

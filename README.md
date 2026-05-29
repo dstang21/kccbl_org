@@ -46,3 +46,8 @@ Important:
 
 ## Environment Note
 Keep the repo-local `postcss.config.js` file in place. It prevents Vite from inheriting a parent Laragon PostCSS config outside this app.
+
+## Hostinger Deployment Note
+- `kccbl.org` is hosted from `~/domains/kccbl.org/public_html`.
+- The Hostinger shell currently has PHP, Composer, and Git, but no Node or npm.
+- Build front-end assets locally with `npm run build` and keep `public/build` committed so production deploys can run without a server-side Node toolchain.

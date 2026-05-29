@@ -3,7 +3,7 @@
 Last updated: 2026-05-28
 
 ## Summary
-The repo has moved from a raw SQL dump to a working Laravel 12 application with a broad public route surface, a shared site shell, legacy-aware models, executable tests, and a passing production front-end build.
+The repo has moved from a raw SQL dump to a working Laravel 12 application with a broad public route surface, a shared site shell, legacy-aware models, executable tests, a passing production front-end build, and a verified Hostinger deployment target for `kccbl.org`.
 
 ## Completed So Far
 
@@ -11,6 +11,8 @@ The repo has moved from a raw SQL dump to a working Laravel 12 application with 
 - Laravel 12 scaffolded into the repo root.
 - Vite/Tailwind front-end pipeline configured and building.
 - Project-local `postcss.config.js` added to isolate the app from parent Laragon PostCSS config bleed-through.
+- Hostinger production constraints verified: `~/domains/kccbl.org/public_html` is the web root, the server has PHP/Composer/Git, the server does not have Node/npm, and GitHub SSH access to the repo works from the Hostinger shell.
+- `public/build` is now treated as a deployment artifact that must stay committed for Hostinger deploys.
 
 ### Public App Slice
 - Implemented homepage.
@@ -109,6 +111,15 @@ Registered now:
 3. Build player claims.
 4. Build `/coach`.
 5. Build `/admin`.
+
+## Deployment Baseline
+- Domain root: `~/domains/kccbl.org`
+- Public web root: `~/domains/kccbl.org/public_html`
+- Current public web root contents: Hostinger placeholder `default.php`
+- Server toolchain confirmed: PHP 8.4, Composer 2.9, Git 2.47
+- Server toolchain missing: Node, npm
+- GitHub access from Hostinger confirmed for `git@github.com:dstang21/kccbl_org.git`
+- Because the server cannot build Vite assets, production deployments must ship the locally built `public/build` directory.
 
 ## Working Rules For Future Agents
 - Read `AGENTS.md` first.
